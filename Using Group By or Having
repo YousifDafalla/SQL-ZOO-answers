@@ -1,0 +1,12 @@
+SELECT continent,COUNT(name)
+  FROM world
+ group by continent
+ 
+ 
+ select continent,sum(population) from world group by continent
+ 
+ select continent,count(name) from world where population>=200000000 group by continent
+ 
+ select continent,sum(population) from world group by continent having sum(population)>500000000
+ 
+ 
