@@ -1,0 +1,10 @@
+select name from world where population > (select population from world where name= 'Russia')
+
+select name from world where continent = 'Europe' and gdp/population > (select gdp/population from world where name='United Kingdom')
+
+select name,continent from world where continent in (select continent from world where name in ('Argentina','Australia')) order by name
+
+select name,population from world where population > (select population from world where name='Canada') and population < (select population from world where name='Poland')
+
+select name,Concat(Round((population/(select population from world where name='Germany'))*100),'%') from world where continent='Europe'
+
