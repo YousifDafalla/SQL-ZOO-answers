@@ -1,0 +1,36 @@
+Show the athelete (who) and the country name for medal winners in 2000.
+SELECT who, country.name FROM ttms JOIN country ON (ttms.country=country.id) WHERE games = 2000
+
+
+Show the who and the color of the medal for the medal winners from 'Sweden'.
+select who,color from ttms join country on ttms.country=country.id where country.name='Sweden'
+
+
+Show the years in which 'China' won a 'gold' medal.
+select games from ttms join country on ttms.country=country.id where country.name='China' and color='gold'
+
+
+Show who won medals in the 'Barcelona' games.
+SELECT who FROM ttws JOIN games  ON (ttws.games=games.yr) WHERE city = 'Barcelona'
+
+
+Show which city 'Jing Chen' won medals. Show the city and the medal color.
+select city,color from ttws join games on ttws.games=games.yr where who='Jing Chen'
+
+
+Show who won the gold medal and the city.
+select who,city from ttws join games on ttws.games=games.yr where color='gold'
+
+
+Show the games and color of the medal won by the team that includes 'Yan Sen'.
+select games,color from ttmd join team on ttmd.team=team.id where name='Yan Sen'
+
+
+Show the 'gold' medal winners in 2004.
+select name from ttmd join team on ttmd.team=team.id where color='gold' and games='2004'
+
+
+Show the name of each medal winner country 'FRA'.
+select name from ttmd join team on ttmd.team=team.id where country='FRA'
+
+
