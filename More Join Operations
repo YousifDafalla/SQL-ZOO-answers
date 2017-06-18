@@ -53,6 +53,9 @@ HAVING COUNT(title)=(SELECT MAX(c) FROM
  where name='John Travolta'
  GROUP BY yr) AS t
 )
+select yr,count(movieid) from movie join casting on movie.id=casting.movieid where 
+actorid=(select id from actor where name='John Travolta') group by yr having count(movieid)>2
+
 
 
 
