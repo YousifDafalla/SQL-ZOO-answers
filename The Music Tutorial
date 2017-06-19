@@ -1,0 +1,39 @@
+Find the title and artist who recorded the song 'Alison'.
+SELECT title, artist FROM album JOIN track ON (album.asin=track.album) WHERE song = 'Alison'
+
+
+Which artist recorded the song 'Exodus'?
+select artist from album join track on album.asin=track.album where song='Exodus'
+
+
+Show the song for each track on the album 'Blur'
+select song from album join track on album.asin=track.album where title='Blur'
+
+
+We can use the aggregate functions and GROUP BY expressions on the joined table.
+SELECT title, COUNT(*) FROM album JOIN track ON (asin=album) GROUP BY title
+
+
+For each album show the title and the total number of tracks containing the word 'Heart' (albums with no such tracks need not be shown).
+select title,count(*) from album join track on album.asin=track.album where song like '%Heart%' group by title
+
+
+A "title track" is where the song is the same as the title. Find the title tracks.
+select song from album join track on album.asin=track.album where album.title=track.song
+
+
+An "eponymous" album is one where the title is the same as the artist (for example the album 'Blur' by the band 'Blur'). Show the eponymous albums.
+select title from album where title=artist
+
+
+Find the songs that appear on more than 2 albums. Include a count of the number of times each shows up.
+select song,count(distinct album) from track group by song having count(distinct album)>2
+
+
+A "good value" album is one where the price per track is less than 50 pence. Find the good value album - show the title, the price and the number of tracks.
+select title,price,count(song) from album join track on album.asin=track.album group by title,price having price/count(song)<.5
+
+
+List albums so that the album with the most tracks is first. Show the title and the number of tracks
+select title,count(*) from album join track on album.asin=track.album group by title order by count(*) desc
+
